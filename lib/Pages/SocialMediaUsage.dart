@@ -1,12 +1,20 @@
+import 'package:fahimbhai/Widget/ChosseUSedSocalMedia.dart';
+import 'package:fahimbhai/Widget/SocialMediaFrequency.dart';
 import 'package:flutter/material.dart';
+
+import '../Widget/Do_you_check_social.dart';
+import '../Widget/feeladdictedtosocialmedia.dart';
+import '../Widget/howmanyhoursperday.dart';
+import '../Widget/primarilyusersocialmedia.dart';
+import '../Widget/rateyourselfintermsofaddiction.dart';
 class SocialMediaUsage extends StatefulWidget {
   @override
   _SocialMediaUsageState createState() => _SocialMediaUsageState();
 }
 
 class _SocialMediaUsageState extends State<SocialMediaUsage> {
-  List<String> selectedSocialMedia = [];
-  int _selectedFrequency = 0;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -14,150 +22,48 @@ class _SocialMediaUsageState extends State<SocialMediaUsage> {
       appBar: AppBar(
         title: Text('Social Media Selection'),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pop(context);
+
+          } else if (index == 1) {
+          //  Navigator.push(context, MaterialPageRoute(builder: (context) => SocialMediaUsage()));
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.navigate_before),
+            label: 'Previous',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.navigate_next),
+            label: 'Next',
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Which social networking sites do you actively use? (Check all that apply)',
-                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 16.0),
-                  CheckboxListTile(
-                    title: Text('Facebook'),
-                    value: selectedSocialMedia.contains('Facebook'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Facebook', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('WhatsApp'),
-                    value: selectedSocialMedia.contains('WhatsApp'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('WhatsApp', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Youtube'),
-                    value: selectedSocialMedia.contains('Youtube'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Youtube', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Telegram'),
-                    value: selectedSocialMedia.contains('Telegram'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Telegram', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Instagram'),
-                    value: selectedSocialMedia.contains('Instagram'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Instagram', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Twitter'),
-                    value: selectedSocialMedia.contains('Twitter'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Twitter', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Snapchat'),
-                    value: selectedSocialMedia.contains('Snapchat'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Snapchat', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Tiktok'),
-                    value: selectedSocialMedia.contains('Tiktok'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Tiktok', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Discord'),
-                    value: selectedSocialMedia.contains('Discord'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('Discord', value!);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('LinkedIn'),
-                    value: selectedSocialMedia.contains('LinkedIn'),
-                    onChanged: (value) {
-                      setState(() {
-                        updateSelectedSocialMedia('LinkedIn', value!);
-                      });
-                    },
-                  ),
-                  SizedBox(height: 16.0),
+            ChooseUsedSocalMedia(),
 
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'How often do you use social media platforms?',
-                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 16.0),
-                  Row(
-
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      buildFrequencyOption(1, 'Rarely or Never'),
-                      SizedBox(width: 10,),
-                      buildFrequencyOption(2, 'Once a week'),
-                      SizedBox(width: 10,),
-                       buildFrequencyOption(3, 'A few times a week'),
-                      SizedBox(width: 10,),
-                      buildFrequencyOption(4, 'Once a day'),
-                      SizedBox(width: 10,),
-                      buildFrequencyOption(5, 'Several times a day'),
-                    ],
-                  ),
-                  SizedBox(height: 16.0),
-
-                ],
-              ),
-            ),
+            SizedBox(height: 16.0),
+            SocialMediaFrequency(),
+            SizedBox(height: 16.0),
+            howmanyhoursperday(),
+            SizedBox(height: 16.0),
+            feeladdictedtosocialmedia(),
+            SizedBox(height: 16.0),
+            rateyourselfintermsofaddiction(),
+            SizedBox(height: 16.0),
+            PurposeSelection(),
+            Do_you_check_social(),
             SizedBox(height: 16.0),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   // Perform action with selected social media
-                  print('Selected social media: $selectedSocialMedia');
+                 // print('Selected social media: $selectedSocialMedia');
                 },
                 child: Text('Submit'),
               ),
@@ -168,34 +74,4 @@ class _SocialMediaUsageState extends State<SocialMediaUsage> {
     );
   }
 
-  void updateSelectedSocialMedia(String platform, bool value) {
-    if (value) {
-      // Add the platform to the selected list
-      selectedSocialMedia.add(platform);
-    } else {
-      // Remove the platform from the selected list
-      selectedSocialMedia.remove(platform);
-    }
-  }
-
-  Widget buildFrequencyOption(int value, String label) {
-    return Flexible(
-      child: Column(
-        children: [
-          Radio(
-            value: value,
-            groupValue: _selectedFrequency,
-            onChanged: (newValue) {
-              setState(() {
-                _selectedFrequency = newValue as int;
-              });
-            },
-          ),
-          Text(label),
-
-        ],
-
-      ),
-    );
-  }
 }
