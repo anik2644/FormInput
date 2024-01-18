@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "810770231962",
+    "project_id": "serveyapp-6d8e8",
+    "storage_bucket": "serveyapp-6d8e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810770231962:android:b03c353612f2f66be06523",
+        "android_client_info": {
+          "package_name": "com.example.fahimbhai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc_ZnrPmNtgLORLwkeYeVbjdtg0PYh0ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
